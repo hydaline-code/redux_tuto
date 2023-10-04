@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { Provider } from 'react';
-import { store } from '@reduxjs/toolkit';
+import store from './redux/store';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { Provider } from 'react-redux';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -12,7 +12,6 @@ root.render(
     <Provider store={store}> 
       <App />
     </Provider>
-  
   </React.StrictMode>
 );
 //Import and wrap <Provider> in your top-level component and inject your store

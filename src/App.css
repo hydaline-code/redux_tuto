@@ -28,6 +28,47 @@
   color: #61dafb;
 }
 
+/* AllUsers.css */
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #cb8484;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.user-info {
+  border: solid black 2px;
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+ 
+}
+
+li {
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.loading-message {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.error-message {
+  color: red;
+}
+
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

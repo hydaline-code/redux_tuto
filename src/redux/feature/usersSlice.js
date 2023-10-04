@@ -1,19 +1,25 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-const url = ' https://randomuser.me/api/';
+//const url = ' https://randomuser.me/api/';
 // First, create the thunk
-export const fetchUsers = createAsyncThunk('users/fetchUsers', async (_, { rejectWithValue }) => {
-  try {
-    if (!response.ok) {
-      throw new Error(`no response! Status: ${response.status}`);
+
+  const url = 'https://randomuser.me/api/';
+
+  // First, create the thunk
+  export const fetchUsers = createAsyncThunk('users/fetchUsers', async (_, { rejectWithValue }) => {
+    try {
+      const response = await fetch(url); // Make a GET request to the API using the fetch API
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      const data = await response.json();
+      return data.results; 
+    } catch (error) {
+      // Pass the error to rejectWithValue
+      return rejectWithValue(error.message);
     }
-    const data = await response.json();
-    return data.results; 
-   } catch (error) {
-    // Pass the error to rejectWithValue
-    return rejectWithValue(error.message);
-  }
-});
+  
+  });
 
  const initialState = {
   users: [],
@@ -24,9 +30,7 @@ export const fetchUsers = createAsyncThunk('users/fetchUsers', async (_, { rejec
  const usersSlice = createSlice ({
   name:'users',
   initialState,
-  reducers: {
-  
-   },
+  reducers: {},
    extraReducers: (builder) => {
     builder
       .addCase(fetchUsers.pending, (state) => {
